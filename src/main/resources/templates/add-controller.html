@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>添加书本</title>
+    <script src="webjars/jquery/1.11.1/jquery.min.js"></script>
+    <script src="webjars/bootstrap/3.3.7-1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css" />
+</head>
+<body>
+<div class="container">
+    <form class="form" role="form" method="post" action="#" th:action="@{/add-book}" th:object="${newBook}">
+        <div class="form-group">
+            <label for="title">标题</label>
+            <input type="text" class="form-control" id="title" required="required" th:field="*{title}" />
+        </div>
+        <div class="form-group">
+            <label for="subTitle">副标题</label>
+            <input type="text" class="form-control" id="subTitle" th:field="*{subtitle}" />
+        </div>
+        <div class="form-group">
+            <label for="authors">作者</label>
+            <input type="text" class="form-control" id="authors" required="required" th:field="*{authors}" />
+        </div>
+        <div class="form-group">
+            <label for="press">出版社</label>
+            <input type="text" class="form-control" id="press" th:field="*{press}" />
+        </div>
+        <div class="form-group">
+            <label for="company">文化公司</label>
+            <input type="text" class="form-control" id="company" th:field="*{company}" />
+        </div>
+        <div class="form-group">
+            <label for="series">丛书名</label>
+            <input type="text" class="form-control" id="series" th:field="*{series}" />
+        </div>
+        <div class="form-group">
+            <label for="date">日期</label>
+            <input type="date" class="form-control" id="date" required="required" th:field="*{date}" />
+        </div>
+        <div class="form-group">
+            <label for="isbn">ISBN</label>
+            <input type="text" class="form-control" id="isbn" th:field="*{isbn}" />
+        </div>
+        <div class="form-group">
+            <label for="classNum">分类号</label>
+            <input type="text" class="form-control" id="classNum" required="required" th:field="*{classNum}" />
+        </div>
+        <div class="form-group">
+            <label for="city">存放城市</label>
+            <input type="text" class="form-control" id="city" required="required" th:field="*{city}" />
+        </div>
+        <button type="submit" class="btn btn-primary">添加</button>
+    </form>
+</div>
+</body>
+</html>
