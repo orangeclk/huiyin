@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/huiyin.iml" filepath="$PROJECT_DIR$/.idea/modules/huiyin.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/huiyin_main.iml" filepath="$PROJECT_DIR$/.idea/modules/huiyin_main.iml" group="huiyin" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/huiyin_test.iml" filepath="$PROJECT_DIR$/.idea/modules/huiyin_test.iml" group="huiyin" />
+    </modules>
+  </component>
+</project>
