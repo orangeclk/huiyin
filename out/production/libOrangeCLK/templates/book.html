@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title th:text="${bookEntity.title} + '-会饮阁'">书</title>
+    <script src="webjars/jquery/1.11.1/jquery.min.js"></script>
+    <script src="webjars/bootstrap/3.3.7-1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css" />
+</head>
+<body>
+<div class="container">
+    <br />
+    <a href="/" class="btn btn-info btn-lg" role="button">首页</a>
+    <h1 th:text="${bookEntity.title}" />
+    <h2 th:text="${bookEntity.subtitle}" />
+    <p>
+        作者/译者：
+        <a th:each="author: ${bookEntity.authorSet}" th:href="@{'/author/' + ${author.id}}" th:text="${author.name + ' '}" />
+    </p>
+    <p th:if="null != ${bookEntity.press}">
+        出版社：
+        <a th:href="@{'/press/' + ${bookEntity.press.id}}" th:text="${bookEntity.press.name}" />
+    </p>
+    <p th:if="null != ${bookEntity.company}">
+        文化公司：
+        <a th:href="@{'/company/' + ${bookEntity.company.id}}" th:text="${bookEntity.company.name}" />
+    </p>
+    <p th:if="null != ${bookEntity.series}">
+        丛书名：
+        <a th:href="@{'/series/' + ${bookEntity.series.id}}" th:text="${bookEntity.series.name}" />
+    </p>
+    <p th:text="${'出版日期：' + #dates.format(bookEntity.date, 'yyyy年MM月dd日')}" />
+    <p th:text="${'ISBN：' + bookEntity.isbn}" />
+    <p th:text="${'分类号：' + bookEntity.classNum}" />
+    <p>
+        地点：
+        <a th:href="@{'/city/' + ${bookEntity.city.id}}" th:text="${bookEntity.city.name}" />
+    </p>
+</div>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title th:text="${authorEntity.name} + '-会饮阁'"></title>
+    <script src="webjars/jquery/1.11.1/jquery.min.js"></script>
+    <script src="webjars/bootstrap/3.3.7-1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css" />
+</head>
+<body>
+<div class="container">
+    <br />
+    <a href="/" class="btn btn-info btn-lg" role="button">首页</a>
+    <br />
+    <h1 th:text="${authorEntity.name}" />
+    <ul>
+        <li th:each="book: ${authorEntity.bookSet}">
+            <a th:href="@{'/book/' + ${book.isbn}}" th:text="${book.title}" />
+        </li>
+    </ul>
+</div>
+</body>
+</html>
