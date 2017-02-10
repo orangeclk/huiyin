@@ -2,32 +2,34 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
     <title>会饮阁</title>
     <script src="webjars/jquery/1.11.1/jquery.min.js"></script>
-    <style>
-        .o-vertical-center{
-            position  : absolute;
-            top       : 40%;
-            left      : 50%;
-            transform : translate(-50%,-50%);
-        }
-    </style>
     <script src="webjars/bootstrap/3.3.7-1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css" />
-</head>
+    <style>
+        .o-vertical-center{
+            display: flex;
+            min-height: 80vh;
+        }
+    </style>
+ </head>
 <body>
-<div class="container text-center o-vertical-center">
-    <h1 th:text="会饮阁"></h1>
-    <br />
-    <form class="form" role="form" action="#" th:action="@{/search}" th:object="${search}" method="post">
-        <div class="input-group input-group-lg">
-            <input type="text" class="form-control" placeholder="输入ISBN" th:field="*{query}" />
-            <span class="input-group-btn">
-                <button type="submit" class="btn btn-primary btn-lg">查询</button>
-            </span>
+<div class="container">
+    <div class="o-vertical-center text-center">
+        <div style="margin: auto;">
+            <h1 th:text="会饮阁"></h1>
+            <br />
+            <form class="form" role="form" action="#" th:action="@{/search}" th:object="${search}" method="post">
+                <div class="input-group input-group-lg">
+                    <input type="text" class="form-control" placeholder="输入ISBN" th:field="*{query}" />
+                    <span class="input-group-btn">
+                        <button type="submit" class="btn btn-primary btn-lg">查询</button>
+                    </span>
+                </div>
+            </form>
         </div>
-    </form>
+    </div>
 </div>
 </body>
 </html>
