@@ -13,6 +13,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 /**
@@ -72,5 +73,10 @@ public class BookServiceImpl implements BookService {
             System.err.println("ParseException:" + e.toString());
         }
         return bookRepository.save(bookEntity);
+    }
+
+    @Override
+    public Iterable<BookEntity> findAll() {
+        return bookRepository.findAll();
     }
 }

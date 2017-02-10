@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
-    <title th:text="${authorEntity.name} + '-会饮阁'"></title>
+    <title>书架-会饮阁</title>
     <script src="webjars/jquery/1.11.1/jquery.min.js"></script>
     <script src="webjars/bootstrap/3.3.7-1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css" />
@@ -22,13 +22,13 @@
         </div>
         <div class="collapse navbar-collapse" id="nav">
             <ul class="nav navbar-nav">
-                <li><a href="/archive">书架</a></li>
+                <li class="active"><a href="/archive">书架</a></li>
             </ul>
         </div>
     </div>
-    <h1 th:text="${authorEntity.name}" />
+    <h1>书架</h1>
     <ul>
-        <li th:each="book: ${authorEntity.bookSet}">
+        <li th:each="book: ${books}">
             <a th:href="@{'/book/' + ${book.isbn}}" th:text="${book.title}" />
         </li>
     </ul>
