@@ -27,13 +27,14 @@
         </div>
     </div>
     <h1 th:text="${companyEntity.name}" />
-    <h2>丛书</h2>
+    <br />
+    <h3>丛书</h3>
     <ul>
         <li th:each="series: ${companyEntity.seriesSet}">
             <a th:href="@{'/series/' + ${series.id}}" th:text="${series.name}" />
         </li>
     </ul>
-    <h2>书本</h2>
+    <h3>单本</h3>
     <ul>
         <li th:each="book: ${companyEntity.bookSet}">
             <a th:href="@{'/book/' + ${book.isbn}}" th:text="${book.title}" />

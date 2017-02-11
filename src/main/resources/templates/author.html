@@ -27,6 +27,7 @@
         </div>
     </div>
     <h1 th:text="${authorEntity.name}" />
+    <br />
     <ul>
         <li th:each="book: ${authorEntity.bookSet}">
             <a th:href="@{'/book/' + ${book.isbn}}" th:text="${book.title}" />
