@@ -26,30 +26,39 @@
             </ul>
         </div>
     </div>
-    <h1 th:text="${bookEntity.title}" />
-    <h2 th:text="${bookEntity.subtitle}" />
-    <p>
+    <h1 th:text="${bookEntity.title}"></h1>
+    <h3 th:text="${bookEntity.subtitle}"></h3>
+    <br />
+    <div th:if="${bookEntity.authorSet.size()} > 1">
         作者/译者：
-        <a th:each="author: ${bookEntity.authorSet}" th:href="@{'/author/' + ${author.id}}" th:text="${author.name + ' '}" />
+        <ul>
+            <li th:each="author: ${bookEntity.authorSet}">
+                <a th:href="@{'/author/' + ${author.id}}" th:text="${author.name}"></a>
+            </li>
+        </ul>
+    </div>
+    <p th:if="1 == ${bookEntity.authorSet.size()}">
+        作者/译者：
+        <a th:each="author: ${bookEntity.authorSet}" th:href="@{'/author/' + ${author.id}}" th:text="${author.name}"></a>
     </p>
     <p th:if="null != ${bookEntity.press}">
         出版社：
-        <a th:href="@{'/press/' + ${bookEntity.press.id}}" th:text="${bookEntity.press.name}" />
+        <a th:href="@{'/press/' + ${bookEntity.press.id}}" th:text="${bookEntity.press.name}"></a>
     </p>
     <p th:if="null != ${bookEntity.company}">
         文化公司：
-        <a th:href="@{'/company/' + ${bookEntity.company.id}}" th:text="${bookEntity.company.name}" />
+        <a th:href="@{'/company/' + ${bookEntity.company.id}}" th:text="${bookEntity.company.name}"></a>
     </p>
     <p th:if="null != ${bookEntity.series}">
         丛书名：
-        <a th:href="@{'/series/' + ${bookEntity.series.id}}" th:text="${bookEntity.series.name}" />
+        <a th:href="@{'/series/' + ${bookEntity.series.id}}" th:text="${bookEntity.series.name}"></a>
     </p>
-    <p th:text="${'出版日期：' + #dates.format(bookEntity.date, 'yyyy年MM月dd日')}" />
-    <p th:text="${'ISBN：' + bookEntity.isbn}" />
-    <p th:text="${'分类号：' + bookEntity.classNum}" />
+    <p th:text="${'出版日期：' + #dates.format(bookEntity.date, 'yyyy年MM月dd日')}"></p>
+    <p th:text="${'ISBN：' + bookEntity.isbn}"></p>
+    <p th:text="${'分类号：' + bookEntity.classNum}"></p>
     <p>
         地点：
-        <a th:href="@{'/city/' + ${bookEntity.city.id}}" th:text="${bookEntity.city.name}" />
+        <a th:href="@{'/city/' + ${bookEntity.city.id}}" th:text="${bookEntity.city.name}"></a>
     </p>
 </div>
 </body>

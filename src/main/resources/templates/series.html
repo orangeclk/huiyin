@@ -27,6 +27,7 @@
         </div>
     </div>
     <h1 th:text="${seriesEntity.name}" />
+    <br />
     <p>
         <a th:href="@{'/press/' + ${seriesEntity.press.id}}" th:text="${seriesEntity.press.name}" />
     </p>
