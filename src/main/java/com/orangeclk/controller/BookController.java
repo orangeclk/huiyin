@@ -24,6 +24,9 @@ public class BookController {
     @RequestMapping("/book/{isbn}")
     public String book(@PathVariable("isbn") String isbn, Model model) { //TODO try to remove ("id")
         BookEntity bookEntity = bookService.findByIsbn(isbn);
+        if (null == bookEntity) {
+            return "error";
+        }
         model.addAttribute(bookEntity);
         return "book";
     }
