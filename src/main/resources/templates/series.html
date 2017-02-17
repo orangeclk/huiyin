@@ -26,17 +26,20 @@
             </ul>
         </div>
     </div>
-    <h1 th:text="${seriesEntity.name}" />
+    <h1 th:text="${seriesEntity.name}"></h1>
     <br />
-    <p>
-        <a th:href="@{'/press/' + ${seriesEntity.press.id}}" th:text="${seriesEntity.press.name}" />
+    <p th:if="null != ${seriesEntity.press}">
+        出版社：
+        <a th:href="@{'/press/' + ${seriesEntity.press.id}}" th:text="${seriesEntity.press.name}"></a>
     </p>
-    <p>
-        <a th:href="@{'/company/' + ${seriesEntity.company.id}}" th:text="${seriesEntity.company.name}" />
+    <p th:if="null != ${seriesEntity.company}">
+        文化公司：
+        <a th:href="@{'/company/' + ${seriesEntity.company.id}}" th:text="${seriesEntity.company.name}"></a>
     </p>
+    <h3>丛书书目：</h3>
     <ul>
         <li th:each="book: ${seriesEntity.bookSet}">
-            <a th:href="@{'/book/' + ${book.isbn}}" th:text="${book.title}" />
+            <a th:href="@{'/book/' + ${book.isbn}}" th:text="${book.title}"></a>
         </li>
     </ul>
 </div>
