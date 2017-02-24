@@ -17,7 +17,7 @@ import java.util.Set;
 public class CityEntity {
     @Id
     @GeneratedValue
-    protected int id;
+    protected Integer id;
 
     @NotNull
     protected String name;
@@ -31,11 +31,11 @@ public class CityEntity {
         return cityEntity;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

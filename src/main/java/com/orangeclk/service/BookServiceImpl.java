@@ -1,5 +1,6 @@
 package com.orangeclk.service;
 
+import com.orangeclk.model.CityChange;
 import com.orangeclk.model.NewBook;
 import com.orangeclk.model.entity.BookEntity;
 import com.orangeclk.model.entity.CompanyEntity;
@@ -9,6 +10,7 @@ import com.orangeclk.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
@@ -73,6 +75,12 @@ public class BookServiceImpl implements BookService {
             System.err.println("ParseException:" + e.toString());
         }
         return bookRepository.save(bookEntity);
+    }
+
+    @Override
+    public BookEntity save(BookEntity book) {
+        System.out.println(bookRepository.exists(book.getIsbn()));
+        return bookRepository.save(book);
     }
 
     @Override

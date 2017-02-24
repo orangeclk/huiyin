@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
+    <title th:text="改变地点"></title>
+    <script src="webjars/jquery/1.11.1/jquery.min.js"></script>
+    <script src="webjars/bootstrap/3.3.7-1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css" />
+</head>
+<body>
+<div class="container">
+    <form class="form" role="form" method="post" action="#" th:action="@{/change-city}" th:object="${cityChange}">
+        <div class="form-group">
+            <label for="isbn">ISBN</label>
+            <input type="text" id="isbn" required="required" th:field="*{isbn}" />
+        </div>
+        <div class="form-group">
+            <label for="city">城市</label>
+            <input type="text" id="city" required="required" th:field="*{cityName}" />
+        </div>
+        <button type="submit" class="btn btn-primary">改变地点</button>
+    </form>
+</div>
+</body>
+</html>
