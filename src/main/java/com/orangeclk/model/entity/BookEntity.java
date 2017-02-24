@@ -1,24 +1,18 @@
 package com.orangeclk.model.entity;
 
-import com.orangeclk.model.NewBook;
-import com.orangeclk.service.AuthorService;
-import org.hibernate.annotations.Cascade;
-import org.hibernate.annotations.Immutable;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.hibernate.annotations.*;
+import org.hibernate.annotations.CascadeType;
 
 import javax.persistence.*;
+import javax.persistence.Entity;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 import java.util.*;
-import java.util.stream.Collectors;
-
-import static javax.persistence.CacheStoreMode.REFRESH;
 
 /**
  * Created by orangeclk on 12/9/16.
  */
 @Entity
-@Immutable
 public class BookEntity {
     @Id
     protected String isbn;
@@ -28,17 +22,21 @@ public class BookEntity {
 
     protected String subtitle;
 
-    @ManyToMany(cascade = CascadeType.PERSIST)
+    @ManyToMany
+    @Cascade(CascadeType.ALL)
     @NotNull
     protected Set<AuthorEntity> authorSet = new HashSet<>();
 
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne
+    @Cascade(CascadeType.ALL)
     protected PressEntity press;
 
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne
+    @Cascade(CascadeType.ALL)
     protected CompanyEntity company;
 
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne
+    @Cascade(CascadeType.ALL)
     protected SeriesEntity series;
 
     @NotNull
@@ -49,7 +47,8 @@ public class BookEntity {
     protected String classNum;
 
     @NotNull
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne
+    @Cascade(CascadeType.ALL)
     protected CityEntity city;
 
     public String getIsbn() {

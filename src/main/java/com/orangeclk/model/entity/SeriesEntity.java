@@ -13,7 +13,7 @@ import java.util.Set;
 public class SeriesEntity {
     @Id
     @GeneratedValue
-    protected int id;
+    protected Integer id;
 
     @NotNull
     protected String name;
@@ -41,11 +41,11 @@ public class SeriesEntity {
         return seriesEntity;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

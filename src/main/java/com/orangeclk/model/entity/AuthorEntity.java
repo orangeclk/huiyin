@@ -17,7 +17,7 @@ import java.util.Set;
 public class AuthorEntity {
     @Id
     @GeneratedValue
-    protected int id;
+    protected Integer id;
 
     @NotNull
     protected String name;
@@ -31,8 +31,16 @@ public class AuthorEntity {
         return authorEntity;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public void setBookSet(Set<BookEntity> bookSet) {
+        this.bookSet = bookSet;
     }
 
     public String getName() {

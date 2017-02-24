@@ -22,7 +22,7 @@ public class BookController {
     }
 
     @RequestMapping("/book/{isbn}")
-    public String book(@PathVariable("isbn") String isbn, Model model) { //TODO try to remove ("id")
+    public String book(@PathVariable("isbn") String isbn, Model model) { //TODO try to remove ("isbn")
         BookEntity bookEntity = bookService.findByIsbn(isbn);
         if (null == bookEntity) {
             return "error";

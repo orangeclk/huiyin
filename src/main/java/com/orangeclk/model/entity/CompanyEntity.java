@@ -17,7 +17,7 @@ import java.util.Set;
 public class CompanyEntity {
     @Id
     @GeneratedValue
-    protected int id;
+    protected Integer id;
 
     @NotNull
     protected String name;
@@ -34,11 +34,11 @@ public class CompanyEntity {
         return companyEntity;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
