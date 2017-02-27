@@ -6,6 +6,7 @@ import com.orangeclk.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.NumberUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -24,8 +25,16 @@ public class HomeController {
     }
 
     @RequestMapping("/search")
-    public String searchSubmit(final Search search, Model model) {
-        model.addAttribute("query", search.getQuery());
-        return "redirect:/book/{query}";
+    public String searchSubmit(final Search search) {
+        boolean valid = search
+                .getQuery()
+                .chars()
+                .mapToObj(Character::isDigit)
+                .reduce(true, (x, y) -> x && y);
+        if (valid) {
+            return "redirect:/book/" + search.getQuery();
+        } else {
+            return "error";
+        }
     }
 }

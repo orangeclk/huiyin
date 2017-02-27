@@ -40,6 +40,6 @@ public class ChangeCityController {
         BookEntity book = bookService.findByIsbn(cityChange.getIsbn());
         book.setCity(cityService.save(cityChange.getCityName()));
         book = bookService.save(book);
-        return "redirect:/" + book.getIsbn();
+        return "redirect:/book/" + book.getIsbn();
     }
 }
