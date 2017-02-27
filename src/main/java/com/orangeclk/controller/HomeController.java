@@ -24,7 +24,8 @@ public class HomeController {
     }
 
     @RequestMapping("/search")
-    public String searchSubmit(final Search search) {
-        return "redirect:/book/" + search.getQuery();
+    public String searchSubmit(final Search search, Model model) {
+        model.addAttribute("query", search.getQuery());
+        return "redirect:/book/{query}";
     }
 }

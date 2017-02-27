@@ -58,7 +58,7 @@ public class AddBookController {
 
     @PostMapping("/add-book")
     public String addBookSubmit(final NewBook newBook) {
-        bookService.save(newBook);
-        return "redirect:/";
+        BookEntity book = bookService.save(newBook);
+        return "redirect:/" + book.getIsbn();
     }
 }
