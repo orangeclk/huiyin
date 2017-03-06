@@ -8,6 +8,7 @@ import com.orangeclk.model.entity.CityEntity;
 import com.orangeclk.model.entity.SeriesEntity;
 import com.orangeclk.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,6 +27,7 @@ import java.util.stream.Stream;
  * Created by orangeclk on 1/8/17.
  */
 @Controller
+@Secured("ROLE_ADMIN")
 public class AddBookController {
 
     protected final BookService bookService;

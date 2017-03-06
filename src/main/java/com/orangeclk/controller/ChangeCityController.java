@@ -5,11 +5,13 @@ import com.orangeclk.model.entity.BookEntity;
 import com.orangeclk.service.BookService;
 import com.orangeclk.service.CityService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import javax.annotation.security.RolesAllowed;
 import javax.transaction.TransactionScoped;
 import javax.transaction.Transactional;
 
@@ -17,6 +19,7 @@ import javax.transaction.Transactional;
  * Created by orangeclk on 2/24/17.
  */
 @Controller
+@Secured("ROLE_ADMIN")
 public class ChangeCityController {
 
     final protected BookService bookService;
