@@ -27,7 +27,6 @@ import java.util.stream.Stream;
  * Created by orangeclk on 1/8/17.
  */
 @Controller
-@Secured("ROLE_ADMIN")
 public class AddBookController {
 
     protected final BookService bookService;
@@ -52,12 +51,14 @@ public class AddBookController {
         this.cityService = cityService;
     }
 
+    @Secured("ROLE_ADMIN")
     @GetMapping("/add-book")
     public String addBook(Model model) {
         model.addAttribute(new NewBook());
         return "add-controller";
     }
 
+    @Secured("ROLE_ADMIN")
     @PostMapping("/add-book")
     public String addBookSubmit(final NewBook newBook) {
         BookEntity book = bookService.save(newBook);

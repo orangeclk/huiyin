@@ -19,7 +19,6 @@ import javax.transaction.Transactional;
  * Created by orangeclk on 2/24/17.
  */
 @Controller
-@Secured("ROLE_ADMIN")
 public class ChangeCityController {
 
     final protected BookService bookService;
@@ -31,14 +30,15 @@ public class ChangeCityController {
         this.cityService = cityService;
     }
 
+    @Secured("ROLE_ADMIN")
     @GetMapping("/change-city")
     public String changeCity(Model model) {
         model.addAttribute(new CityChange());
         return "change-city";
     }
 
+    @Secured("ROLE_ADMIN")
     @PostMapping("/change-city")
-    @Transactional
     public String changeCitySubmit(final CityChange cityChange) {
         BookEntity book = bookService.findByIsbn(cityChange.getIsbn());
         book.setCity(cityService.save(cityChange.getCityName()));
