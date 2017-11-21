@@ -15,6 +15,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -48,10 +49,15 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public BookEntity save(NewBook newBook) {
+        BookEntity bookEntity = bookRepository.findByIsbn(newBook.getIsbn());
+        if (bookEntity != null) {
+            return bookEntity;
+        }
+
         CompanyEntity company = companyService.save(newBook.getCompany());
         PressEntity press = pressService.save(newBook.getPress());
 
-        BookEntity bookEntity = new BookEntity();
+        bookEntity = new BookEntity();
         bookEntity.setIsbn(newBook.getIsbn());
         bookEntity.setTitle(newBook.getTitle());
         bookEntity.setSubtitle(newBook.getSubtitle());

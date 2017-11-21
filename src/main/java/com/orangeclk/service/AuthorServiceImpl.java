@@ -5,6 +5,8 @@ import com.orangeclk.repository.AuthorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 /**
  * Created by orangeclk on 12/25/16.
  */
@@ -19,16 +21,15 @@ public class AuthorServiceImpl implements AuthorService {
     }
 
     @Override
-    public AuthorEntity findByName(String name) {
+    public Optional<AuthorEntity> findByName(String name) {
         return authorRepository.findByName(name);
     }
 
     @Override
     public AuthorEntity save(String name) {
-        AuthorEntity authorEntity = authorRepository.findByName(name);
-        return authorEntity == null
-                ? authorRepository.save(AuthorEntity.valueOf(name))
-                : authorEntity;
+        return authorRepository
+                .findByName(name)
+                .orElse(authorRepository.save(AuthorEntity.valueOf(name)));
     }
 
     @Override
