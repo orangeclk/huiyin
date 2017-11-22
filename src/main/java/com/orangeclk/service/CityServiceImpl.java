@@ -5,6 +5,8 @@ import com.orangeclk.repository.CityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 /**
  * Created by orangeclk on 1/9/17.
  */
@@ -19,16 +21,15 @@ public class CityServiceImpl implements CityService {
     }
 
     @Override
-    public CityEntity findByName(String name) {
+    public Optional<CityEntity> findByName(String name) {
         return cityRepository.findByName(name);
     }
 
     @Override
     public CityEntity save(String name) {
-        CityEntity cityEntity = cityRepository.findByName(name);
-        return cityEntity == null
-                ? cityRepository.save(CityEntity.valueOf(name))
-                : cityEntity;
+        return cityRepository
+                .findByName(name)
+                .orElse(cityRepository.save(CityEntity.valueOf(name)));
     }
 
     @Override

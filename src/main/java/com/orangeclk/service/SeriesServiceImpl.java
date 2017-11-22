@@ -10,12 +10,14 @@ import com.orangeclk.repository.SeriesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 /**
  * Created by orangeclk on 1/9/17.
  */
 @Service
 public class SeriesServiceImpl implements SeriesService {
-    protected final SeriesRepository seriesRepository;
+    private final SeriesRepository seriesRepository;
 
     public SeriesServiceImpl(SeriesRepository seriesRepository) {
         this.seriesRepository = seriesRepository;
@@ -26,20 +28,20 @@ public class SeriesServiceImpl implements SeriesService {
         if (name.equals("")) {
             return null;
         }
-        SeriesEntity seriesEntity = seriesRepository.findByName(name);
-        if (seriesEntity != null) {
-            return seriesEntity;
-        } else {
-            seriesEntity = new SeriesEntity();
-            seriesEntity.setName(name);
-            seriesEntity.setCompany(company);
-            seriesEntity.setPress(press);
-            return seriesRepository.save(seriesEntity);
-        }
+
+        return seriesRepository
+                .findByName(name)
+                .orElseGet(() -> {
+                    SeriesEntity seriesEntity = new SeriesEntity();
+                    seriesEntity.setName(name);
+                    seriesEntity.setCompany(company);
+                    seriesEntity.setPress(press);
+                    return seriesRepository.save(seriesEntity);
+                });
     }
 
     @Override
-    public SeriesEntity findByName(String name) {
+    public Optional<SeriesEntity> findByName(String name) {
         return seriesRepository.findByName(name);
     }
 

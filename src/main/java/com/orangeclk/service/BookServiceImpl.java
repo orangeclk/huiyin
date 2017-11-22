@@ -25,12 +25,12 @@ import java.util.stream.Collectors;
 @Service
 public class BookServiceImpl implements BookService {
 
-    protected final BookRepository bookRepository;
-    protected final AuthorService authorService;
-    protected final CityService cityService;
-    protected final CompanyService companyService;
-    protected final PressService pressService;
-    protected final SeriesService seriesService;
+    private final BookRepository bookRepository;
+    private final AuthorService authorService;
+    private final CityService cityService;
+    private final CompanyService companyService;
+    private final PressService pressService;
+    private final SeriesService seriesService;
 
     @Autowired
     public BookServiceImpl(BookRepository bookRepository, AuthorService authorService, CityService cityService, CompanyService companyService, PressService pressService, SeriesService seriesService) {

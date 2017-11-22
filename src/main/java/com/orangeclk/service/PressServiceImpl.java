@@ -5,6 +5,8 @@ import com.orangeclk.repository.PressRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 /**
  * Created by orangeclk on 1/9/17.
  */
@@ -18,7 +20,7 @@ public class PressServiceImpl implements PressService {
     }
 
     @Override
-    public PressEntity findByName(String name) {
+    public Optional<PressEntity> findByName(String name) {
         return pressRepository.findByName(name);
     }
 
@@ -27,10 +29,10 @@ public class PressServiceImpl implements PressService {
         if (name.equals("")) {
             return null;
         }
-        PressEntity pressEntity = pressRepository.findByName(name);
-        return pressEntity == null
-                ? pressRepository.save(PressEntity.valueOf(name))
-                : pressEntity;
+
+        return pressRepository
+                .findByName(name)
+                .orElse(PressEntity.valueOf(name));
     }
 
     @Override
