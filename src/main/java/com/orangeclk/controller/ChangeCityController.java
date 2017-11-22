@@ -21,8 +21,8 @@ import javax.transaction.Transactional;
 @Controller
 public class ChangeCityController {
 
-    final protected BookService bookService;
-    final protected CityService cityService;
+    final private BookService bookService;
+    final private CityService cityService;
 
     @Autowired
     public ChangeCityController(BookService bookService, CityService cityService) {

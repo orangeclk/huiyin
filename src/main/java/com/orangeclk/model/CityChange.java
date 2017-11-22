@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
  */
 public class CityChange {
     protected String isbn;
-    protected String cityName;
+    private String cityName;
 
     public String getIsbn() {
         return isbn;
